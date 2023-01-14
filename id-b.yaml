@@ -1,0 +1,53 @@
+bug:
+  - &b space.byu.id
+  - &b2 tiktok.com
+  - &path /worryfree
+proxies:
+  - name: id_byu1  #ID
+    server: *b
+    port: 80
+    type: vmess
+    uuid: 397e377f-32aa-421c-b862-05c021bad37a
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    servername: 
+    network: ws
+    ws-opts:
+      path: *path
+      headers:
+        Host: a12z.zixstyle.my.id
+    udp: true
+  - name: id_byu2
+    server: *b
+    port: 80
+    type: vmess
+    uuid: 059c72ed-41b7-4e95-ad7f-30201bb5666c
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    servername: ikd-stb.bhm.my.id
+    network: ws
+    ws-opts:
+      path: *path
+      headers:
+        Host: ikd-stb.bhm.my.id
+    udp: true
+  - name: id_byu3
+    server: *b
+    port: 80
+    type: vmess
+    uuid: 8eeddb4b-6fdf-41b2-be36-c364abfa9098
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    servername: apik-stb.bhm.my.id
+    network: ws
+    ws-opts:
+      path: *path
+      headers:
+        Host: apik-stb.bhm.my.id
+    udp: true

@@ -1,0 +1,37 @@
+bug:
+  - &b gatesfleximak.com
+  - &b2 tiktok.com
+  - &path /worryfree
+proxies:
+  - name: id_game2
+    server: *b
+    port: 80
+    type: vmess
+    uuid: 87f9a79f-6ccc-485a-af6a-33b2381c69ec
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    servername: 
+    network: ws
+    ws-opts:
+      path: *path
+      headers:
+        Host: ikd.aioxray.my.id
+    udp: true
+  - name: id_game #ID
+    server: *b
+    port: 80
+    type: vmess
+    uuid: 3f60a231-81cc-41cc-8ca2-04732f2d860d
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    servername: 
+    network: ws
+    ws-opts:
+      path: *path
+      headers:
+        Host: a12z.zixstyle.my.id
+    udp: true
