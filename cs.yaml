@@ -177,8 +177,8 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: '7'
     proxies:
-      - Lid
       - Lsg
+      - Lid
   - name: Lid
     type: load-balance 
     strategy: round-robin
@@ -186,14 +186,14 @@ proxy-groups:
     ipv6: true 
     conntrack: true 
     delay: 0
-    timeout: 8
-    max_failures: 5
+    timeout: 2
+    max_failures: 10
     enable-udp: true
     url: http://www.gstatic.com/generate_204
     interval: '300'
     use:
       - ID_g
-      #- ID_t
+      - ID_t
   - name: Lsg
     type: load-balance 
     strategy: round-robin
@@ -201,21 +201,21 @@ proxy-groups:
     ipv6: true 
     conntrack: true 
     delay: 0
-    timeout: 10
-    max_failures: 5
+    timeout: 1
+    max_failures: 10
     enable-udp: true
     url: http://www.gstatic.com/generate_204
     interval: '200'
     use:
       - SG_g
-      #- SG_t
+      - SG_t
   - name: fid
     type: fallback
     lazy: true
     disable-udp: false
     use: 
-      #- ID_t
       - ID_g
+      - ID_t
   - name: ads
     type: select 
     proxies:
@@ -247,7 +247,7 @@ rule-providers:
 rules:
   - IP-CIDR,127.0.0.1/32,REJECT,no-resolve
   - IP-CIDR6,::1/128,REJECT,no-resolve
-  #- RULE-SET,personalads,ads  
+  - RULE-SET,personalads,ads  
   #- RULE-SET,basicads,ads
   - DOMAIN-SUFFIX,googlesyndication.com,fid
   - AND,((DST-PORT,5228-5230),(NETWORK,TCP)),fid
