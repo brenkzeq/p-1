@@ -171,7 +171,7 @@ proxy-groups:
     ipv6: true 
     conntrack: true 
     delay: 0
-    timeout: 1
+    timeout: 9
     max_failures: 5
     enable-udp: true
     url: http://www.gstatic.com/generate_204
@@ -190,7 +190,7 @@ proxy-groups:
     max_failures: 5
     enable-udp: true
     url: http://www.gstatic.com/generate_204
-    interval: '30'
+    interval: '300'
     use:
       - ID_g
       #- ID_t
@@ -205,7 +205,7 @@ proxy-groups:
     max_failures: 5
     enable-udp: true
     url: http://www.gstatic.com/generate_204
-    interval: '43'
+    interval: '200'
     use:
       - SG_g
       #- SG_t
