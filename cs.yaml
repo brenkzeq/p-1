@@ -4,7 +4,7 @@ proxy-providers:
     type: http
     behavior: classical
     url: https://raw.githubusercontent.com/brenkzeq/p-1/main/id-g.yaml
-    interval: 10800
+    interval: 3600
     path: "./proxy_provider/id_game.yaml"  
     health-check:
       enable: true
@@ -14,7 +14,7 @@ proxy-providers:
     type: http
     behavior: classical
     url: https://raw.githubusercontent.com/brenkzeq/p-1/main/id-t.yaml
-    interval: 10800
+    interval: 3600
     path: "./proxy_provider/id_opok_merah.yaml"
     health-check:
       enable: true
@@ -24,7 +24,7 @@ proxy-providers:
     type: http
     behavior: classical
     url: https://raw.githubusercontent.com/brenkzeq/p-1/main/sg-g.yaml
-    interval: 10800 
+    interval: 3600 
     path: "./proxy_provider/sg_game.yaml" 
     health-check:
       enable: true
@@ -34,7 +34,7 @@ proxy-providers:
     type: http
     behavior: classical
     url: https://raw.githubusercontent.com/brenkzeq/p-1/main/sg-t.yaml
-    interval: 10800 
+    interval: 3600 
     path: "./proxy_provider/sg_opok_merah.yaml" 
     health-check:
       enable: true
