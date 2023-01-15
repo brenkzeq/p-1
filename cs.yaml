@@ -245,8 +245,8 @@ rule-providers:
 rules:
   - IP-CIDR,127.0.0.1/32,REJECT,no-resolve
   - IP-CIDR6,::1/128,REJECT,no-resolve
-  - RULE-SET,personalads,ads  
-  - RULE-SET,basicads,ads
+  #- RULE-SET,personalads,ads  
+  #- RULE-SET,basicads,ads
   - DOMAIN-SUFFIX,googlesyndication.com,fid
   - AND,((DST-PORT,5228-5230),(NETWORK,TCP)),fid
   - GEOSITE,CATEGORY-ADS-ALL,REJECT
