@@ -33,7 +33,7 @@ proxy-providers:
   SG_t:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/brenkzeq/p-1/main/sg-t.yaml
+    url: https://raw.githubusercontent.com/brenkzeq/p-1/main/sg-m.yaml
     interval: 86400 
     path: "./proxy_provider/sg_opok_merah.yaml" 
     health-check:
