@@ -161,10 +161,8 @@ proxy-groups:
   - name: FINAL
     type: select
     proxies:
-      - LOAD-BALANCE
-      - f2
-      - f1
-  - name: LOAD-BALANCE 
+      - dv-qq
+  - name: dv-qq 
     type: load-balance
     strategy: round-robin
     enable: true
@@ -177,9 +175,9 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: '7'
     proxies:
-      - f2
-      - f1
-  - name: f1
+      - Li
+      - Lg
+  - name: Li
     type: load-balance 
     strategy: round-robin
     enable: true
@@ -190,11 +188,11 @@ proxy-groups:
     max_failures: 5
     enable-udp: true
     url: http://www.gstatic.com/generate_204
-    interval: '200'
+    interval: '30'
     use:
       - ID_g
       - ID_t
-  - name: f2
+  - name: Lg
     type: load-balance 
     strategy: round-robin
     enable: true
@@ -205,20 +203,26 @@ proxy-groups:
     max_failures: 5
     enable-udp: true
     url: http://www.gstatic.com/generate_204
-    interval: '300'
+    interval: '43'
     use:
       - SG_g
       - SG_t
-      - SG_b
-  -  name: ads
-     type: select 
-     proxies:
-       - REJECT 
-       - Direct
-  -  name: Direct
-     type: select
-     proxies:
-       - FINAL
+  - name: fid
+    type: fallback
+    lazy: true
+    disable-udp: false
+    use: 
+      - ID_t
+      - ID_g
+  - name: ads
+    type: select 
+    proxies:
+      - REJECT 
+      - Direct
+  - name: Direct
+    type: select
+    proxies:
+      - FINAL
 rule-providers:
  # reject:
   #  type: file
@@ -243,8 +247,8 @@ rules:
   - IP-CIDR6,::1/128,REJECT,no-resolve
   - RULE-SET,personalads,ads  
   - RULE-SET,basicads,ads
-  #- DOMAIN-SUFFIX,googlesyndication.com,idf
- # - AND,((DST-PORT,5228-5230),(NETWORK,TCP)),DIRECT
+  - DOMAIN-SUFFIX,googlesyndication.com,fid
+  - AND,((DST-PORT,5228-5230),(NETWORK,TCP)),fid
   - GEOSITE,CATEGORY-ADS-ALL,REJECT
   - AND,((GEOSITE,YOUTUBE),(NETWORK,UDP)),REJECT
   - MATCH,FINAL
