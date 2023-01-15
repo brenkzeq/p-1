@@ -34,20 +34,4 @@ proxies:
       path: /worryfree
       headers:
         Host: tsel.me
-    udp: true 
-  - name: pokpok
-    server: vip-04.kedailoe.my.id
-    port: 80
-    type: vmess
-    uuid: 1eb6b28e-47fa-4cf9-8546-baae4602f3ec
-    alterId: 0
-    cipher: auto
-    tls: false
-    skip-cert-verify: true
-    servername: bug.com
-    network: ws
-    ws-opts:
-      path: /vmess
-      headers:
-        Host: vip-04.kedailoe.my.id
     udp: true
