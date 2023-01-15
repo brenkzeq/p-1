@@ -162,6 +162,8 @@ proxy-groups:
     type: select
     proxies:
       - dv-qq
+      - Lid
+      - Lsg
   - name: dv-qq 
     type: load-balance
     strategy: round-robin
@@ -169,15 +171,15 @@ proxy-groups:
     ipv6: true 
     conntrack: true 
     delay: 0
-    timeout: 9
+    timeout: 1
     max_failures: 5
     enable-udp: true
     url: http://www.gstatic.com/generate_204
     interval: '7'
     proxies:
-      - Li
-      - Lg
-  - name: Li
+      - Lid
+      - Lsg
+  - name: Lid
     type: load-balance 
     strategy: round-robin
     enable: true
@@ -191,8 +193,8 @@ proxy-groups:
     interval: '30'
     use:
       - ID_g
-      - ID_t
-  - name: Lg
+      #- ID_t
+  - name: Lsg
     type: load-balance 
     strategy: round-robin
     enable: true
@@ -206,13 +208,13 @@ proxy-groups:
     interval: '43'
     use:
       - SG_g
-      - SG_t
+      #- SG_t
   - name: fid
     type: fallback
     lazy: true
     disable-udp: false
     use: 
-      - ID_t
+      #- ID_t
       - ID_g
   - name: ads
     type: select 
