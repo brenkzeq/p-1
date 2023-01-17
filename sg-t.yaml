@@ -19,19 +19,3 @@ proxies:
       headers:
         Host: z-p15.www.instagram.com
     udp: true
-  - name: sg_tsel2
-    server: vip-sg001.zix-style.works
-    port: 80
-    type: vmess
-    uuid: f615a27c-fdac-4aac-864b-aeb44df5eee2
-    alterId: 0
-    cipher: auto
-    tls: false
-    skip-cert-verify: true
-    servername: z-p15.www.instagram.com
-    network: ws
-    ws-opts:
-      path: /worryfree
-      headers:
-        Host: tsel.me
-    udp: true
