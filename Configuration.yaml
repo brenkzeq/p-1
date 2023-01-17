@@ -249,8 +249,8 @@ rules:
   - IP-CIDR6,::1/128,REJECT,no-resolve
   - RULE-SET,personalads,ads  
   - RULE-SET,basicads,ads
-  - DOMAIN-SUFFIX,googlesyndication.com,Lid
-  - AND,((DST-PORT,5228-5230),(NETWORK,TCP)),Lid
+  - DOMAIN-SUFFIX,googlesyndication.com,Li
+  - AND,((DST-PORT,5228-5230),(NETWORK,TCP)),Li
   - GEOSITE,CATEGORY-ADS-ALL,REJECT
   - AND,((GEOSITE,YOUTUBE),(NETWORK,UDP)),REJECT
   - MATCH,FINAL
