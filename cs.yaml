@@ -159,7 +159,8 @@ dns:
       - "+.githubusercontent.com"
 proxy-groups:
   - name: FINAL
-    type: select
+    type: fallback
+    lazy: true
     proxies:
       - dv-qq
       - Lid
