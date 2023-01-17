@@ -1,1 +1,38 @@
+bug:
+  - &b tsel.me
+  - &b2 tiktok.com
+  - &path /worryfree
 proxies:
+  - name: idtsel
+    server: a12z.zixstyle.my.id
+    port: 80
+    type: vmess
+    uuid: 3f60a231-81cc-41cc-8ca2-04732f2d860d
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    servername: z-p15.www.instagram.com
+    network: ws
+    ws-opts:
+      path: http://tsel.me/worryfree
+      headers:
+        Host: z-p15.www.instagram.com
+    udp: true
+  - name: idtsel2
+    server: a12z.zixstyle.my.id
+    port: 80
+    type: vmess
+    uuid: 3f60a231-81cc-41cc-8ca2-04732f2d860d
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    servername: z-p15.www.instagram.com
+    network: ws
+    ws-opts:
+      path: /worryfree
+      headers:
+        Host: tsel.me
+    udp: true
+
