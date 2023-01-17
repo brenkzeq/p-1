@@ -1,0 +1,254 @@
+--- 
+proxy-providers:
+  ID_g:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/brenkzeq/p-1/main/id-g.yaml
+    interval: 3600
+    path: "./proxy_provider/id_game.yaml"  
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 180
+  ID_t:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/brenkzeq/p-1/main/id-t.yaml
+    interval: 3600
+    path: "./proxy_provider/id_opok_merah.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 180
+  SG_g:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/brenkzeq/p-1/main/sg-g.yaml
+    interval: 3600 
+    path: "./proxy_provider/sg_game.yaml" 
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 180
+  SG_t:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/brenkzeq/p-1/main/sg-t.yaml
+    interval: 3600 
+    path: "./proxy_provider/sg_opok_merah.yaml" 
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 180
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+tproxy-port: 7895
+mode: rule
+allow-lan: true
+unified-delay: true
+bind-address: '*'
+log-level: info 
+ipv6: false 
+geodata-mode: true
+external-controller: 0.0.0.0:9090
+external-ui: dashboard/dist
+tcp-concurrent: true
+# interface-name: ""
+enable-process: true 
+geodata-loader: memconservative
+routing-mark: 233
+inbound-tfo: true 
+enable-mux: true
+# secret: ""
+geox-url: {mmdb: "", geoip: "", geosite: ""}
+profile:
+  store-selected: true
+  store-fake-ip: true 
+experimental: {sniff-tls-sni: true, fingerprint: ""}
+sniffer:
+  enable: true 
+  sniffing: [tls, http]
+  force-domain:
+    - '+'
+  skip-domain:
+    - '+.google.com'
+  port-whitelist:
+    - '443'
+    - '80'
+  force-dns-mapping: true
+  parse-pure-ip: true
+hosts: {"api.duniagames.co.id": "172.64.146.115", "cacerts.digicert.com": "104.21.21.147", "ota.googlezip.net": "127.0.0.1", "ota-cache1.googlezip.net": "127.0.0.1", "ota-cache2.googlezip.net": "127.0.0.1"}
+tun:
+  enable: true
+  device: utun
+  stack: system
+  dns-hijack:
+    - any:53
+  auto-route: true
+  auto-detect-interface: false
+  inet4-address: 198.18.0.1/30
+  inet6-address: [fdfe:dcba:9876::1/126]
+  mtu: 9000
+  strict-route: true
+  inet4-route-address:
+    - 0.0.0.0/1
+    - 128.0.0.0/1
+  inet6-route-address:
+    - '::/1'
+    - '8000::/1'
+  include-android-user:
+    - 0
+dns:
+  enable: true
+  ipv6: false 
+  prefer-h3: true 
+  default-nameserver:
+    - '1.1.1.1'
+  #  - '144.144.144.144'
+   # - '119.29.29.29'
+  listen: 0.0.0.0:1053
+  use-hosts: true
+  enhanced-mode: fake-ip 
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter: ["*.local", "*.localhost"]
+  proxy-server-nameserver:
+    - '8.8.8.8'
+  #  - '144.144.144.144'
+   # - '119.29.29.29'
+  nameserver:
+  #  - 'tcp://144.144.144.144'
+   # - 'tcp://119.29.29.29'
+    - 'tcp://1.0.0.1'
+    - 'tcp://8.8.4.4'
+  fallback:
+    - 'https://1.1.1.1/dns-query'
+    - 'https://cloudflare-dns.com/dns-query'
+    - 'https://dns.google/dns-query'
+    - 'https://8.8.8.8/dns-query'
+    - 'tls://8.8.8.8:853'
+   # - 'tls://dns.rubyfish.cn:853'
+  fallback-filter:
+    geoip: true
+    geoip-code: '!ID'
+    geosite:
+       - gfw
+    ipcidr:
+       - 240.0.0.0/4
+       - 0.0.0.0/8
+       - 10.0.0.0/8
+       - 100.64.0.0/10
+       - 127.0.0.0/8
+       - 169.254.0.0/16
+       - 172.16.0.0/12
+       - 192.0.0.0/24
+       - 192.0.2.0/24
+       - 192.88.99.0/24
+       - 192.168.0.0/16
+       - 198.18.0.0/16
+       - 198.51.100.0/24
+       - 203.0.113.0/24
+       - 224.0.0.0/4
+       - 240.0.0.0/4
+       - 255.255.255.255/32
+    domain:
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
+      - "+.githubusercontent.com"
+proxy-groups:
+  - name: FINAL
+    type: select
+    proxies:
+      - dv-qq
+  - name: dv-qq 
+    type: load-balance
+    strategy: round-robin
+    enable: true
+    ipv6: true 
+    conntrack: true 
+    delay: 0
+    timeout: 9
+    max_failures: 5
+    enable-udp: true
+    url: http://www.gstatic.com/generate_204
+    interval: '7'
+    proxies:
+      - Li
+      - Lg
+  - name: Li
+    type: load-balance 
+    strategy: round-robin
+    enable: true
+    ipv6: true 
+    conntrack: true 
+    delay: 0
+    timeout: 8
+    max_failures: 5
+    enable-udp: true
+    url: http://www.gstatic.com/generate_204
+    interval: '30'
+    use:
+      - ID_g
+      - ID_t
+  - name: Lg
+    type: load-balance 
+    strategy: round-robin
+    enable: true
+    ipv6: true 
+    conntrack: true 
+    delay: 0
+    timeout: 10
+    max_failures: 5
+    enable-udp: true
+    url: http://www.gstatic.com/generate_204
+    interval: '43'
+    use:
+      - SG_g
+      - SG_t
+  - name: fid
+    type: fallback
+    lazy: true
+    disable-udp: false
+    use: 
+      - ID_t
+      - ID_g
+  - name: ads
+    type: select 
+    proxies:
+      - REJECT 
+      - Direct
+  - name: Direct
+    type: select
+    proxies:
+      - FINAL
+rule-providers:
+ # reject:
+  #  type: file
+  #  behavior: domain
+    #url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+  #  path: ./ruleset/reject.yaml
+   # interval: 86400
+  basicads:
+    type: file
+    behavior: domain
+    url: https://raw.githubusercontent.com/malikshi/open_clash/main/rule_provider/rule_basicads.yaml
+    path: "./rule_provider/rule_basicads.yaml"
+    interval: 259200
+  personalads:
+    type: file
+    behavior: classical
+    url: https://raw.githubusercontent.com/malikshi/open_clash/main/rule_provider/rule_personalads.yaml
+    path: "./rule_provider/rule_personalads.yaml"
+    interval: 259200
+rules:
+  - IP-CIDR,127.0.0.1/32,REJECT,no-resolve
+  - IP-CIDR6,::1/128,REJECT,no-resolve
+  - RULE-SET,personalads,ads  
+  - RULE-SET,basicads,ads
+  - DOMAIN-SUFFIX,googlesyndication.com,fid
+  - AND,((DST-PORT,5228-5230),(NETWORK,TCP)),fid
+  - GEOSITE,CATEGORY-ADS-ALL,REJECT
+  - AND,((GEOSITE,YOUTUBE),(NETWORK,UDP)),REJECT
+  - MATCH,FINAL
