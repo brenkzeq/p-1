@@ -162,8 +162,8 @@ proxy-groups:
     type: fallback
     lazy: true
     proxies:
-      - dv-qq
-      - Lid
+     # - dv-qq
+     # - Lid
       - Lsg
   - name: dv-qq 
     type: load-balance
@@ -193,7 +193,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: '300'
     use:
-      - ID_g
+     # - ID_g
       #- ID_t
   - name: Lsg
     type: load-balance 
@@ -208,7 +208,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: '200'
     use:
-      - SG_g
+     # - SG_g
       - SG_t
   - name: fid
     type: fallback
