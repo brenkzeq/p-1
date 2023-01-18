@@ -163,8 +163,8 @@ proxy-groups:
     lazy: true
     proxies:
       #- dv-qq
-      #- Lid
-      - Lsg
+      - Lid
+      #- Lsg
   - name: dv-qq 
     type: load-balance
     strategy: round-robin
@@ -194,7 +194,7 @@ proxy-groups:
     interval: '300'
     use:
       #- ID_g
-      #- ID_t
+      - ID_t
   - name: Lsg
     type: load-balance 
     strategy: round-robin
@@ -216,7 +216,7 @@ proxy-groups:
     disable-udp: false
     use: 
       #- ID_g
-      - SG_t
+      - ID_t
   - name: ads
     type: select 
     proxies:
