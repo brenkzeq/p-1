@@ -215,8 +215,8 @@ proxy-groups:
     lazy: true
     disable-udp: false
     use: 
-      - ID_g
-      #- ID_t
+      #- ID_g
+      - SG_t
   - name: ads
     type: select 
     proxies:
