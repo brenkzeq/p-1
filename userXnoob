@@ -1,0 +1,265 @@
+--- 
+proxy-providers:
+  ID_g:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/brenkzeq/p-1/main/id-g.yaml
+    interval: 3600
+    path: "./proxy_provider/id_game.yaml"  
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 180
+  ID_t:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/brenkzeq/p-1/main/id-t.yaml
+    interval: 3600
+    path: "./proxy_provider/id_opok_merah.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 180
+  SG_g:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/brenkzeq/p-1/main/sg-g.yaml
+    interval: 3600 
+    path: "./proxy_provider/sg_game.yaml" 
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 180
+  SG_t:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/brenkzeq/p-1/main/sg-t.yaml
+    interval: 3600 
+    path: "./proxy_provider/sg_opok_merah.yaml" 
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 180
+# port: 7890
+# socks-port: 7891
+# mixed-port: 7890
+redir-port: 9899
+tproxy-port: 9898
+mode: rule
+allow-lan: false
+unified-delay: true
+bind-address: '*'
+# info / warning / error / debug / silent
+log-level: error
+ipv6: false
+geodata-mode: true
+geodata-loader: memconservative
+external-controller: 0.0.0.0:9090
+external-ui: ../dashboard/dist
+# secret: ""
+# tcp-concurrent: false
+enable-process: false
+# inbound-tfo: false
+interface-name: ""
+# routing-mark: 233
+# geox-url: {
+  # mmdb: "",
+  # geoip: "",
+  # geosite: ""
+# }
+profile:
+  store-selected: true
+  store-fake-ip: false
+# experimental:
+  # sniff-tls-sni: true
+  # udp-fallback-match: true
+  # fingerprint: ""
+sniffer: # sniff domain name optional configuration
+  enable: false
+  # sniffing protocol required
+  sniffing:
+    - tls
+    - http
+  # force sniffing on this domain name
+  force-domain:
+    - +.v2ex.com
+  # Sniff only on ports in the whitelist, default 443, 80
+  port-whitelist:
+    - 80
+    - 443
+  # force-dns-mapping: true
+  # parse-pure-ip: true
+tun:
+  enable: false
+  # biarkan default utun
+  device: utun
+  mtu: 9000
+  # gvisor / lwip / system
+  stack: system
+  dns-hijack:
+    - any:53
+  auto-route: false
+  auto-detect-interface: false
+  # inet4-address: 28.0.0.0/30
+  # inet6-address: [fdfe:dcba:9876::1/126]
+  strict-route: false
+  # inet4-route-address:
+    # - 0.0.0.0/1
+    # - 128.0.0.0/1
+  # inet6-route-address:
+    # - '::/1'
+    # - '8000::/1'
+  # include-android-user:
+    # - 0
+    # - 10
+dns:
+  enable: true
+  ipv6: false # false akan mengembalikan hasil kosong untuk AAAA
+  prefer-h3: false
+  default-nameserver:
+    - 8.8.8.8
+  listen: 0.0.0.0:1053
+  use-hosts: true
+  # redir-host / fake-ip
+  enhanced-mode: fake-ip
+  fake-ip-range: 49.0.0.0/8
+  fake-ip-filter:
+    - '*.local'
+    - '*.localhost'
+    - '+.stun.*.*'
+    - '+.stun.*.*.*'
+    - '+.stun.*.*.*.*'
+    - '+.stun.*.*.*.*.*'
+  proxy-server-nameserver:
+    - '1.0.0.1#domestic'
+  nameserver:
+    - 1.1.1.1
+    - 8.8.8.8
+    # - tls://1.1.1.1:853 # DNS over TLS
+    # - dhcp://rmnet_data+ # dns from dhcp
+    # - https://doh.pub/dns-query # DNS over HTTPS
+    # - https://dns.alidns.com/dns-query#h3=true  # Mandatory HTTP/3, irrelevant to perfer-h3, mandatory HTTP/3 support for DoH, if not supported, it will not work
+    # - https://mozilla.cloudflare-dns.com/dns-query#DNS&h3=true # Specify policy group and use HTTP/3
+    # - quic://dns.adguard.com:784 # DNS over QUIC
+    # - '8.8.8.8#en0' # Compatible with designated DNS egress NIC
+  # nameserver-policy:
+    # "*.v2-ray.com": '1.1.1.1'
+    # "*.vmess.sbs": '1.1.1.1'
+    # "*.1server.co": '1.1.1.1'
+  # fallback:
+    # - 'https://1.0.0.1/dns-query'
+    # - 'https://9.9.9.9/dns-query'
+  # fallback-filter:
+    # geoip: false
+    # geoip-code: '!ID'
+    # # geosite:
+      # # - gfw
+    # # ipcidr:
+      # # - 240.0.0.0/4
+    # domain:
+      # - '+.google.com'
+      # - '+.facebook.com'
+      # - '+.youtube.com'
+hosts: {
+  "ota.googlezip.net": "127.0.0.1",
+  "ota-cache1.googlezip.net": "127.0.0.1",
+  "ota-cache2.googlezip.net": "127.0.0.1"
+  }
+proxy-groups:
+  - name: FINAL
+    type: fallback
+    lazy: true
+    proxies:
+      - dv-qq
+      - Lid
+      - Lsg
+  - name: dv-qq 
+    type: load-balance
+    strategy: round-robin
+    enable: true
+    ipv6: true 
+    conntrack: true 
+    delay: 0
+    timeout: 9
+    max_failures: 5
+    enable-udp: true
+    url: http://www.gstatic.com/generate_204
+    interval: '7'
+    proxies:
+      - Lsg
+      - Lid
+  - name: Lid
+    type: load-balance 
+    strategy: round-robin
+    enable: true
+    ipv6: true 
+    conntrack: true 
+    delay: 0
+    timeout: 2
+    max_failures: 10
+    enable-udp: true
+    url: http://www.gstatic.com/generate_204
+    interval: '300'
+    use:
+      - ID_g
+      #- ID_t
+  - name: Lsg
+    type: load-balance 
+    strategy: round-robin
+    enable: true
+    ipv6: true 
+    conntrack: true 
+    delay: 0
+    timeout: 1
+    max_failures: 10
+    enable-udp: true
+    url: http://www.gstatic.com/generate_204
+    interval: '200'
+    use:
+      - SG_g
+      #- SG_t
+  - name: fid
+    type: fallback
+    lazy: true
+    disable-udp: false
+    use: 
+      - ID_g
+      #- ID_t
+  - name: ads
+    type: select 
+    proxies:
+      - REJECT 
+      - Direct
+  - name: Direct
+    type: select
+    proxies:
+      - FINAL
+rule-providers:
+ # reject:
+  #  type: file
+  #  behavior: domain
+    #url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+  #  path: ./ruleset/reject.yaml
+   # interval: 86400
+  basicads:
+    type: file
+    behavior: domain
+    url: https://raw.githubusercontent.com/malikshi/open_clash/main/rule_provider/rule_basicads.yaml
+    path: "./rule_provider/rule_basicads.yaml"
+    interval: 259200
+  personalads:
+    type: file
+    behavior: classical
+    url: https://raw.githubusercontent.com/malikshi/open_clash/main/rule_provider/rule_personalads.yaml
+    path: "./rule_provider/rule_personalads.yaml"
+    interval: 259200
+rules:
+  - IP-CIDR,127.0.0.1/32,REJECT,no-resolve
+  - IP-CIDR6,::1/128,REJECT,no-resolve
+  #- RULE-SET,personalads,ads  
+  #- RULE-SET,basicads,ads
+  - DOMAIN-SUFFIX,googlesyndication.com,fid
+  - AND,((DST-PORT,5228-5230),(NETWORK,TCP)),fid
+  - GEOSITE,CATEGORY-ADS-ALL,REJECT
+  - AND,((GEOSITE,YOUTUBE),(NETWORK,UDP)),REJECT
+  - MATCH,FINAL
