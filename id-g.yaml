@@ -1,5 +1,5 @@
 bug:
-  - &b gatesfleximak.com
+  - &b 172.64.146.115
   - &b2 tiktok.com
   - &path /worryfree
 proxies:
