@@ -162,8 +162,6 @@ proxy-groups:
     type: select
     proxies:
       - LOAD-BALANCE
-      - Lsg
-      - Lid
   - name: LOAD-BALANCE 
     type: load-balance
     strategy: consistent-hashing 
@@ -171,28 +169,8 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: '30'
     proxies:
-      - Lsg
-      - Lid
-  - name: Lid
-    type: load-balance 
-    strategy: round-robin
-    enable-udp: true
-    url: http://www.gstatic.com/generate_204
-    interval: '200'
-    use:
-      - ID_g
-      #- ID_t
-      #- ID_b
-  - name: Lsg
-    type: load-balance 
-    strategy: round-robin
-    enable-udp: true
-    url: http://www.gstatic.com/generate_204
-    interval: '300'
-    use:
       - SG_g
-     # - SG_t
-      #- SG_b
+      - ID_g
   -  name: ads
      type: select 
      proxies:
