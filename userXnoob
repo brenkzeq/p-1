@@ -168,7 +168,7 @@ proxy-groups:
     enable-udp: true
     url: http://www.gstatic.com/generate_204
     interval: '10'
-    proxies:
+    use:
       - SG_g
       - ID_g
     health-check:
