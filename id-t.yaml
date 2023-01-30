@@ -4,6 +4,22 @@ bug:
   - &path /worryfree
 proxies:
   - name: idtsel
+    server: ikd.aioxray.my.id
+    port: 80
+    type: vmess
+    uuid: 87f9a79f-6ccc-485a-af6a-33b2381c69ec
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    servername:
+    network: ws
+    ws-opts:
+      path: http://tsel.me/worryfree
+      headers:
+        Host: m.mobilelegends.com
+    udp: true
+  - name: idtsel
     server: a12z.zixstyle.my.id
     port: 80
     type: vmess
@@ -12,10 +28,10 @@ proxies:
     cipher: auto
     tls: false
     skip-cert-verify: true
-    servername: z-p15.www.instagram.com
+    servername:
     network: ws
     ws-opts:
       path: http://tsel.me/worryfree
       headers:
-        Host: z-p15.www.instagram.com
+        Host: m.mobilelegends.com
     udp: true
