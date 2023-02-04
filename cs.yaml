@@ -170,7 +170,6 @@ proxy-groups:
     type: select
     proxies:
       - dv-qq
-      #- Lsg
   - name: dv-qq 
     type: load-balance
     strategy: round-robin
