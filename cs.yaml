@@ -169,7 +169,7 @@ proxy-groups:
   - name: FINAL
     type: select
     proxies:
-      - load-balance
+      - dv-qq
       #- Lsg
   - name: dv-qq 
     type: load-balance
