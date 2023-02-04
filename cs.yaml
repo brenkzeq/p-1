@@ -167,11 +167,9 @@ hosts: {
   }
 proxy-groups:
   - name: FINAL
-    type: fallback
-    lazy: true
+    type: select
     proxies:
-      - dv-qq
-      - Lid
+      - load-balance
       #- Lsg
   - name: dv-qq 
     type: load-balance
@@ -224,7 +222,7 @@ proxy-groups:
     disable-udp: false
     use: 
       #- ID_g
-      - ID_t
+      #- ID_t
   - name: ads
     type: select 
     proxies:
