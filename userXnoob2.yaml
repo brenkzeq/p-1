@@ -184,18 +184,18 @@ rule-providers:
     #url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
   #  path: ./ruleset/reject.yaml
    # interval: 86400
-  basicads:
-    type: file
-    behavior: domain
-    url: https://raw.githubusercontent.com/malikshi/open_clash/main/rule_provider/rule_basicads.yaml
-    path: "./rule_provider/rule_basicads.yaml"
-    interval: 259200
-  personalads:
-    type: file
-    behavior: classical
-    url: https://raw.githubusercontent.com/malikshi/open_clash/main/rule_provider/rule_personalads.yaml
-    path: "./rule_provider/rule_personalads.yaml"
-    interval: 259200
+  #basicads:
+    #type: file
+    #behavior: domain
+   # url: https://raw.githubusercontent.com/malikshi/open_clash/main/rule_provider/rule_basicads.yaml
+  #  path: "./rule_provider/rule_basicads.yaml"
+   # interval: 259200
+ # personalads:
+   # type: file
+   # behavior: classical
+  #  url: https://raw.githubusercontent.com/malikshi/open_clash/main/rule_provider/rule_personalads.yaml
+   # path: "./rule_provider/rule_personalads.yaml"
+   # interval: 259200
 rules:
   - IP-CIDR,127.0.0.1/32,REJECT,no-resolve
   - IP-CIDR6,::1/128,REJECT,no-resolve
