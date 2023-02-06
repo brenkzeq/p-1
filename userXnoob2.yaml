@@ -8,12 +8,12 @@ proxies:
     cipher: auto
     tls: false
     skip-cert-verify: true
-    servername: z-p15.www.instagram.com
+    servername: 
     network: ws
     ws-opts:
       path: http://tsel.me/worryfree
       headers:
-        Host: z-p15.www.instagram.com
+        Host: m.mobilelegends.com
     udp: true 
 port: 7890
 socks-port: 7891
