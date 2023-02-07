@@ -47,7 +47,7 @@ mixed-port: 7893
 tproxy-port: 7895
 mode: rule
 allow-lan: true
-unified-delay: true
+unified-delay: false
 bind-address: '*'
 log-level: info 
 ipv6: false 
@@ -79,7 +79,7 @@ sniffer:
     - '80'
   force-dns-mapping: true
   parse-pure-ip: true
-hosts: {"api.duniagames.co.id": "172.64.146.115", "cacerts.digicert.com": "104.21.21.147", "ota.googlezip.net": "127.0.0.1", "ota-cache1.googlezip.net": "127.0.0.1", "ota-cache2.googlezip.net": "127.0.0.1"}
+hosts: {"ota.googlezip.net": "127.0.0.1", "ota-cache1.googlezip.net": "127.0.0.1", "ota-cache2.googlezip.net": "127.0.0.1"}
 tun:
   enable: true
   device: utun
@@ -163,7 +163,7 @@ proxy-groups:
     proxies:
       - LOAD-BALANCE
   - name: LOAD-BALANCE 
-    type: fallback
+    type: load-balance
     strategy: round-robin
     enable-udp: true
     url: http://www.gstatic.com/generate_204
