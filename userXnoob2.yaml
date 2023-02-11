@@ -13,7 +13,7 @@ proxies:
     ws-opts:
       path: http://tsel.me/worryfree
       headers:
-        Host: m.mobilelegends.com
+        Host: m4.mobilelegends.com
     udp: true 
 port: 7890
 socks-port: 7891
