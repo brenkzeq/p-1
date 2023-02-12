@@ -4,7 +4,7 @@ bug:
   - &path /vmess
 proxies:
   - name: QQ
-    server: gatesfleximak.com
+    server: 172.64.146.115
     port: 80
     type: vmess
     uuid: be1d329f-663b-40bf-967a-7f1d32bd73ac
