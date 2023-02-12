@@ -1,5 +1,5 @@
 proxies:
-  - name: qq
+  - name: DV
     server: dv-01.kedailoe.my.id
     port: 80
     type: vmess
@@ -15,7 +15,7 @@ proxies:
       headers:
         Host: m4.mobilelegends.com
     udp: 
-  - name: qqq
+  - name: QQ
     server: dv-01.kedailoe.my.id
     port: 80
     type: vmess
@@ -149,11 +149,19 @@ dns:
       - '+.youtube.com'
       - "+.githubusercontent.com"
 proxy-groups:
-  - name: FINAL
+  - name: userXnoob2
     type: select
     proxies:
-      - qqq
-      - qq
+      - DV-QQ
+  - name: DV-QQ 
+    type: load-balance
+    strategy: round-robin
+    enable-udp: true
+    url: http://www.gstatic.com/generate_204
+    interval: '100'
+    proxies:
+      - DV
+      - QQ
 rules:
   #- IP-CIDR,127.0.0.1/32,REJECT,no-resolve
   #- IP-CIDR6,::1/128,REJECT,no-resolve
@@ -163,4 +171,4 @@ rules:
   #- AND,((DST-PORT,5228-5230),(NETWORK,TCP)),DIRECT
   - GEOSITE,CATEGORY-ADS-ALL,REJECT
   - AND,((GEOSITE,YOUTUBE),(NETWORK,UDP)),REJECT
-  - MATCH,FINAL
+  - MATCH,userXnoob2
