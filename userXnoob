@@ -140,7 +140,7 @@ dns:
 proxy-groups:
   - name: FINAL
     type: select
-    use:
+    proxies:
       - userXnoob
   - name: userXnoob
     type: load-balance
