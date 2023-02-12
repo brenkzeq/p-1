@@ -3,11 +3,11 @@ bug:
   - &b2 104.18.41.141
   - &path /worryfree
 proxies:
-  - name: sg_game1
+  - name: sg
     server: *b
     port: 80
-    type: vmess
-    uuid: f615a27c-fdac-4aac-864b-aeb44df5eee2
+    type: vless
+    uuid: e72c4124-746f-4ea2-88ab-c9f4d4c56be6
     alterId: 0
     cipher: auto
     tls: false
@@ -17,5 +17,5 @@ proxies:
     ws-opts:
       path: *path
       headers:
-        Host: vip-sg001.zix-style.works
+        Host: dv-qq.xgra.my.id
     udp: true
