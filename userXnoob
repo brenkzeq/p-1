@@ -160,8 +160,8 @@ dns:
 proxy-groups:
   - name: FINAL
     type: select
-    proxies:
-      - LOAD-BALANCE
+    use:
+      - ID_g
   - name: LOAD-BALANCE 
     type: load-balance
     strategy: round-robin
