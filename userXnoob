@@ -172,12 +172,12 @@ proxy-groups:
     proxies:
       - FINAL
 rule-providers:
- # reject:
-  #  type: file
-  #  behavior: domain
-    #url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
-  #  path: ./ruleset/reject.yaml
-   # interval: 86400
+  reject:
+    type: file
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400
   basicads:
     type: file
     behavior: domain
@@ -195,8 +195,9 @@ rules:
   - IP-CIDR6,::1/128,REJECT,no-resolve
   - RULE-SET,personalads,ads  
   - RULE-SET,basicads,ads
+  - RULE-SET,reject,ads
   #- DOMAIN-SUFFIX,googlesyndication.com,idf
- # - AND,((DST-PORT,5228-5230),(NETWORK,TCP)),DIRECT
-  #- GEOSITE,CATEGORY-ADS-ALL,REJECT
-  #- AND,((GEOSITE,YOUTUBE),(NETWORK,UDP)),REJECT
+  - AND,((DST-PORT,5228-5230),(NETWORK,TCP)),DIRECT
+  - GEOSITE,CATEGORY-ADS-ALL,REJECT
+  - AND,((GEOSITE,YOUTUBE),(NETWORK,UDP)),REJECT
   - MATCH,FINAL
