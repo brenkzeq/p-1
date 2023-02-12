@@ -3,23 +3,7 @@ proxies:
     server: dv-01.kedailoe.my.id
     port: 80
     type: vmess
-    uuid: be1d329f-663b-40bf-967a-7f1d32bd73ac
-    alterId: 0
-    cipher: auto
-    tls: false
-    skip-cert-verify: true
-    servername: 
-    network: ws
-    ws-opts:
-      path: http://tsel.me/worryfree
-      headers:
-        Host: m4.mobilelegends.com
-    udp: 
-  - name: QQ
-    server: dv-01.kedailoe.my.id
-    port: 80
-    type: vmess
-    uuid: be1d329f-663b-40bf-967a-7f1d32bd73ac
+    uuid: e8ecd2fa-3461-4650-b9a3-4c88d6da2d8e
     alterId: 0
     cipher: auto
     tls: false
@@ -152,7 +136,7 @@ proxy-groups:
   - name: userXnoob2
     type: select
     proxies:
-      - QQ
+      - DV
 rules:
   #- IP-CIDR,127.0.0.1/32,REJECT,no-resolve
   #- IP-CIDR6,::1/128,REJECT,no-resolve
