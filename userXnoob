@@ -15,6 +15,22 @@ proxies:
       headers:
         Host: dv-01.kedailoe.my.id
     udp: true
+  - name: DV
+    server: *b
+    port: 80
+    type: vless
+    uuid: e72c4124-746f-4ea2-88ab-c9f4d4c56be6
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    servername: 
+    network: ws
+    ws-opts:
+      path: *path
+      headers:
+        Host: dv-qq.xgra.my.id
+    udp: true
 port: 7890
 socks-port: 7891
 redir-port: 7892
@@ -144,7 +160,8 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: '300'
     proxies:
-      - QQ 
+      - DV
+      - QQ
   - name: ads
     type: select 
     proxies:
