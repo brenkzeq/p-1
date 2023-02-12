@@ -1,9 +1,9 @@
 proxies:
   - name: qq
-    server: a12z.zixstyle.my.id
+    server: dv-01.kedailoe.my.id
     port: 80
     type: vmess
-    uuid: 3f60a231-81cc-41cc-8ca2-04732f2d860d
+    uuid: be1d329f-663b-40bf-967a-7f1d32bd73ac
     alterId: 0
     cipher: auto
     tls: false
@@ -14,7 +14,23 @@ proxies:
       path: http://tsel.me/worryfree
       headers:
         Host: m4.mobilelegends.com
-    udp: true 
+    udp: 
+  - name: qqq
+    server: dv-01.kedailoe.my.id
+    port: 80
+    type: vmess
+    uuid: be1d329f-663b-40bf-967a-7f1d32bd73ac
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    servername: 
+    network: ws
+    ws-opts:
+      path: /worryfree
+      headers:
+        Host: tsel.me
+    udp: true
 port: 7890
 socks-port: 7891
 redir-port: 7892
@@ -136,14 +152,15 @@ proxy-groups:
   - name: FINAL
     type: select
     proxies:
+      - qqq
       - qq
 rules:
-  - IP-CIDR,127.0.0.1/32,REJECT,no-resolve
-  - IP-CIDR6,::1/128,REJECT,no-resolve
+  #- IP-CIDR,127.0.0.1/32,REJECT,no-resolve
+  #- IP-CIDR6,::1/128,REJECT,no-resolve
   #- RULE-SET,personalads,ads  
   #- RULE-SET,basicads,ads
   #- DOMAIN-SUFFIX,googlesyndication.com,idf
   #- AND,((DST-PORT,5228-5230),(NETWORK,TCP)),DIRECT
-  #- GEOSITE,CATEGORY-ADS-ALL,REJECT
-  #- AND,((GEOSITE,YOUTUBE),(NETWORK,UDP)),REJECT
+  - GEOSITE,CATEGORY-ADS-ALL,REJECT
+  - AND,((GEOSITE,YOUTUBE),(NETWORK,UDP)),REJECT
   - MATCH,FINAL
