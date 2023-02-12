@@ -1,6 +1,6 @@
 bug:
-  - &b 172.64.146.115
-  - &b2 tiktok.com
+  - &bw 172.64.146.115
+  - &b gatesfleximak.com
   - &path /vmess
 proxies:
   - name: id_game2
