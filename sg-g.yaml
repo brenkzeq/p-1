@@ -1,7 +1,7 @@
 bug:
   - &b 172.64.146.115
   - &b2 104.18.41.141
-  - &path /worryfree
+  - &path /vless
 proxies:
   - name: sg
     server: *b
