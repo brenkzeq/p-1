@@ -16,7 +16,7 @@ proxies:
         Host: dv-01.kedailoe.my.id
     udp: true
   - name: DV
-    server: *b
+    server: 104.18.41.141
     port: 80
     type: vless
     uuid: e72c4124-746f-4ea2-88ab-c9f4d4c56be6
@@ -27,7 +27,7 @@ proxies:
     servername: 
     network: ws
     ws-opts:
-      path: *path
+      path: /vless
       headers:
         Host: dv-qq.xgra.my.id
     udp: true
