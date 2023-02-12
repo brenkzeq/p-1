@@ -141,8 +141,8 @@ proxy-groups:
   - name: FINAL
     type: select
     proxies:
-      - userXnoob
-  - name: userXnoob
+      - dv-qq
+  - name: dv-qq
     type: load-balance
     strategy: round-robin
     enable-udp: true
