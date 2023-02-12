@@ -1,25 +1,20 @@
---- 
-proxy-providers:
-  ID_g:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/brenkzeq/p-1/main/id-g.yaml
-    interval: 3600
-    path: "./proxy_provider/id_game.yaml"  
-    health-check:
-      enable: true
-      url: http://www.gstatic.com/generate_204
-      interval: 180
-  SG_g:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/brenkzeq/p-1/main/sg-g.yaml
-    interval: 3600 
-    path: "./proxy_provider/sg_game.yaml" 
-    health-check:
-      enable: true
-      url: http://www.gstatic.com/generate_204
-      interval: 180
+proxies:
+  - name: QQ
+    server: 172.64.146.115
+    port: 80
+    type: vmess
+    uuid: be1d329f-663b-40bf-967a-7f1d32bd73ac
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    servername: 
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: dv-01.kedailoe.my.id
+    udp: true
 port: 7890
 socks-port: 7891
 redir-port: 7892
@@ -148,9 +143,8 @@ proxy-groups:
     enable-udp: true
     url: http://www.gstatic.com/generate_204
     interval: '300'
-    use:
-      - ID_g
-      - SG_g
+    proxies:
+      - QQ 
   - name: ads
     type: select 
     proxies:
