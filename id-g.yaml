@@ -3,11 +3,11 @@ bug:
   - &bw gatesfleximak.com
   - &path /vmess
 proxies:
-  - name: id_game2
-    server: *b
+  - name: QQ
+    server: gatesfleximak.com
     port: 80
     type: vmess
-    uuid: 87f9a79f-6ccc-485a-af6a-33b2381c69ec
+    uuid: be1d329f-663b-40bf-967a-7f1d32bd73ac
     alterId: 0
     cipher: auto
     tls: false
@@ -15,7 +15,7 @@ proxies:
     servername: 
     network: ws
     ws-opts:
-      path: *path
+      path: /vmess
       headers:
         Host: dv-01.kedailoe.my.id
     udp: true
