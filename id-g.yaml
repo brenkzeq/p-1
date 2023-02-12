@@ -1,6 +1,6 @@
 bug:
-  - &bw 172.64.146.115
-  - &b gatesfleximak.com
+  - &b 172.64.146.115
+  - &bw gatesfleximak.com
   - &path /vmess
 proxies:
   - name: id_game2
