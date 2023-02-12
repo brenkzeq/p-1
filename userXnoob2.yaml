@@ -152,15 +152,6 @@ proxy-groups:
   - name: userXnoob2
     type: select
     proxies:
-      - DV-QQ
-  - name: DV-QQ 
-    type: load-balance
-    strategy: round-robin
-    enable-udp: true
-    url: http://www.gstatic.com/generate_204
-    interval: '100'
-    proxies:
-      - DV
       - QQ
 rules:
   #- IP-CIDR,127.0.0.1/32,REJECT,no-resolve
