@@ -1,5 +1,21 @@
 proxies:
   - name: DV
+    server: 104.18.3.2
+    port: 80
+    type: vmess
+    uuid: e8ecd2fa-3461-4650-b9a3-4c88d6da2d8e
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    servername: 
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: dv-qq.xgra.my.id
+    udp: true
+  - name: QQ
     server: dv-qq.xgra.my.id
     port: 80
     type: vmess
@@ -166,9 +182,11 @@ profile:
   store-fake-ip: true
 proxy-groups:
   - name: userXnoob2
-    type: select
+    type: fallback
+    lazy: true 
     proxies:
       - DV
+      - QQ
 rules:
   - DST-PORT,7895,REJECT
   - DST-PORT,7892,REJECT
