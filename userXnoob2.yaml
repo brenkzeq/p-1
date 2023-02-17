@@ -1,5 +1,5 @@
 proxies:
-  - name: QQ
+  - name: DV
     server: 104.18.3.2
     port: 80
     type: vmess
