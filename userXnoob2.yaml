@@ -170,7 +170,6 @@ proxy-groups:
     lazy: true 
     proxies:
       - DV
-      - QQ
 rules:
   - DST-PORT,7895,REJECT
   - DST-PORT,7892,REJECT
