@@ -24,12 +24,12 @@ proxies:
     cipher: auto
     tls: false
     skip-cert-verify: true
-    servername: 104.22.25.131
+    servername: 
     network: ws
     ws-opts:
       path: /vmess
       headers:
-        Host: 104.22.25.131
+        Host: dv-qq.xgra.my.id
     udp: true
 proxy-groups:
   - name: FINAL
