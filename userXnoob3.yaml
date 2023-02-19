@@ -1,0 +1,292 @@
+proxies:
+  - name: butatik02
+    server: dv-qq.xgra.my.id
+    port: 80
+    type: vmess
+    uuid: 7370631a-ec9f-48ff-8a2e-d6205bcbf792
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    servername: 
+    network: ws
+    ws-opts:
+      path: /worryfree
+      headers:
+        Host: tsel.me
+    udp: true
+  - name: butatik
+    server: 104.22.25.131
+    port: 80
+    type: vmess
+    uuid: 7dd3f0a1-8f3b-4684-945d-53c1fb5a5054
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    servername: 104.22.25.131
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: 104.22.25.131
+    udp: true
+proxy-groups:
+  - name: FINAL
+    type: select
+    proxies:
+      - butatik
+      - butatik02
+  - name: ads
+    type: select 
+    proxies:
+      - REJECT 
+      - Direct
+  - name: Direct
+    type: select
+    proxies:
+      - FINAL
+rule-providers:
+  reject:
+    type: file
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400
+  basicads:
+    type: file
+    behavior: domain
+    url: https://raw.githubusercontent.com/malikshi/open_clash/main/rule_provider/rule_basicads.yaml
+    path: "./rule_provider/rule_basicads.yaml"
+    interval: 25920
+  personalads:
+    type: file
+    behavior: classical
+    url: https://raw.githubusercontent.com/malikshi/open_clash/main/rule_provider/rule_personalads.yaml
+    path: "./rule_provider/rule_personalads.yaml"
+    interval: 25920
+  yt:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/clash1step/rule-provider/master/%E5%AA%92%E4%BD%93%E6%9C%8D%E5%8A%A1/YouTube.list
+    path: "./rule_provider/rule_yt1.yaml"
+    interval: 25920
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+  ml:
+    type: http
+    behavior: domain
+    url: "https://raw.githubusercontent.com/helmiau/clashrules/main/rule_provider/Game_MobileLegends_Ports.yaml"
+    path: ./ruleset/ml.yaml
+    interval: 86400
+  fb:
+    type: http
+    behavior: domain
+    url: "https://raw.githubusercontent.com/helmiau/clashrules/main/rule_provider/Facebook.yaml"
+    path: ./ruleset/fb.yaml
+    interval: 86400
+  shopee:
+    type: http
+    behavior: domain
+    url: "https://raw.githubusercontent.com/helmiau/clashrules/main/rule_provider/Shopee.yaml"
+    path: ./ruleset/shopee.yaml
+    interval: 86400
+  googlecdn:
+    type: http
+    behavior: domain
+    url: "https://raw.githubusercontent.com/clash1step/rule-provider/master/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/GoogleCDN.list"
+    path: ./ruleset/googlecdn.yaml
+    interval: 86400
+  google2:
+    type: http
+    behavior: domain
+    url: "https://raw.githubusercontent.com/clash1step/rule-provider/master/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/Google.list"
+    path: ./ruleset/google.yaml
+    interval: 86400
+rules:
+  - DST-PORT,7895,REJECT
+  - DST-PORT,7892,REJECT
+  - IP-CIDR,127.0.0.1/32,REJECT,no-resolve
+  - IP-CIDR6,::1/128,REJECT,no-resolve
+  - RULE-SET,personalads,ads  
+  - RULE-SET,basicads,ads
+  - RULE-SET,reject,ads
+  - RULE-SET,yt,FINAL
+  - RULE-SET,proxy,butatik
+  - RULE-SET,telegramcidr,tele
+  - RULE-SET,gfw,butatik02
+  - RULE-SET,ml,butatik02
+  - RULE-SET,fb,butatik02
+  - RULE-SET,shopee,shopee
+  - RULE-SET,googlecdn,butatik02
+  - RULE-SET,google2,butatik02
+  #- DOMAIN-SUFFIX,googlesyndication.com,idf
+  #- AND,((DST-PORT,5228-5230),(NETWORK,TCP)),DIRECT
+  #- GEOSITE,CATEGORY-ADS-ALL,REJECT
+  #- AND,((GEOSITE,YOUTUBE),(NETWORK,UDP)),REJECT
+  - MATCH,FINAL
+https-port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+dns-port: 7874
+tproxy-port: 7895
+port: 7890
+ipv6: false
+geodata-mode: false
+geodata-loader: memconservative
+tcp-concurrent: true
+mode: rule
+log-level: info
+allow-lan: true
+external-controller: 0.0.0.0:9090
+secret: '123456'
+bind-address: "*"
+external-ui: "/usr/share/openclash/ui"
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip 
+  listen: 0.0.0.0:7874
+  nameserver:
+  - dhcp://"usb0"
+  - 192.168.208.238
+  - 8.8.4.4
+  fallback:
+  - tls://dns.google:853
+  - tls://8.8.4.4:853
+  - https://dns.google/query?name=8.8.4.4
+  - https://dns.google/resolve?name=4.4.8.8.in-addr.arpa&type=PTR
+  - dns.google
+  default-nameserver:
+  - 8.8.4.4
+  - 8.8.8.8
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+  - "*.lan"
+  - "*.localdomain"
+  - "*.example"
+  - "*.invalid"
+  - "*.localhost"
+  - "*.test"
+  - "*.local"
+  - "*.home.arpa"
+  - time.*.com
+  - time.*.gov
+  - time.*.edu.cn
+  - time.*.apple.com
+  - time-ios.apple.com
+  - time1.*.com
+  - time2.*.com
+  - time3.*.com
+  - time4.*.com
+  - time5.*.com
+  - time6.*.com
+  - time7.*.com
+  - ntp.*.com
+  - ntp1.*.com
+  - ntp2.*.com
+  - ntp3.*.com
+  - ntp4.*.com
+  - ntp5.*.com
+  - ntp6.*.com
+  - ntp7.*.com
+  - "*.time.edu.cn"
+  - "*.ntp.org.cn"
+  - "+.pool.ntp.org"
+  - time1.cloud.tencent.com
+  - music.163.com
+  - "*.music.163.com"
+  - "*.126.net"
+  - musicapi.taihe.com
+  - music.taihe.com
+  - songsearch.kugou.com
+  - trackercdn.kugou.com
+  - "*.kuwo.cn"
+  - api-jooxtt.sanook.com
+  - api.joox.com
+  - joox.com
+  - y.qq.com
+  - "*.y.qq.com"
+  - streamoc.music.tc.qq.com
+  - mobileoc.music.tc.qq.com
+  - isure.stream.qqmusic.qq.com
+  - dl.stream.qqmusic.qq.com
+  - aqqmusic.tc.qq.com
+  - amobile.music.tc.qq.com
+  - "*.xiami.com"
+  - "*.music.migu.cn"
+  - music.migu.cn
+  - "+.msftconnecttest.com"
+  - "+.msftncsi.com"
+  - msftconnecttest.com
+  - msftncsi.com
+  - localhost.ptlogin2.qq.com
+  - localhost.sec.qq.com
+  - "+.srv.nintendo.net"
+  - "*.n.n.srv.nintendo.net"
+  - "+.stun.playstation.net"
+  - xbox.*.*.microsoft.com
+  - "*.*.xboxlive.com"
+  - xbox.*.microsoft.com
+  - xnotify.xboxlive.com
+  - "+.battlenet.com.cn"
+  - "+.wotgame.cn"
+  - "+.wggames.cn"
+  - "+.wowsgame.cn"
+  - "+.wargaming.net"
+  - proxy.golang.org
+  - stun.*.*
+  - stun.*.*.*
+  - "+.stun.*.*"
+  - "+.stun.*.*.*"
+  - "+.stun.*.*.*.*"
+  - "+.stun.*.*.*.*.*"
+  - heartbeat.belkin.com
+  - "*.linksys.com"
+  - "*.linksyssmartwifi.com"
+  - "*.router.asus.com"
+  - mesu.apple.com
+  - swscan.apple.com
+  - swquery.apple.com
+  - swdownload.apple.com
+  - swcdn.apple.com
+  - swdist.apple.com
+  - lens.l.google.com
+  - stun.l.google.com
+  - "+.nflxvideo.net"
+  - "*.square-enix.com"
+  - "*.finalfantasyxiv.com"
+  - "*.ffxiv.com"
+  - "*.ff14.sdo.com"
+  - ff.dorado.sdo.com
+  - "*.mcdn.bilivideo.cn"
+  - "+.media.dssott.com"
+  - shark007.net
+  - Mijia Cloud
+sniffer:
+  enable: false
+  sniffing:
+  - tls
+  - http
+  ForceDnsMapping: false
+  ParsePureIp: true
+profile:
+  store-selected: true
+  store-fake-ip: true
