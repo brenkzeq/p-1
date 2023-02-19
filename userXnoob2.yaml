@@ -19,7 +19,7 @@ proxies:
     server: dv-qq.xgra.my.id
     port: 80
     type: vmess
-    uuid: e8ecd2fa-3461-4650-b9a3-4c88d6da2d8e
+    uuid: 824c7167-7269-470b-a7b6-41612fea7829
     alterId: 0
     cipher: auto
     tls: false
