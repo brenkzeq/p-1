@@ -33,7 +33,7 @@ proxies:
     udp: true
 proxy-groups:
   - name: FINAL
-    type: select
+    type: fallback
     proxies:
       - butatik
       - butatik02
@@ -129,11 +129,9 @@ rules:
   - RULE-SET,reject,ads
   - RULE-SET,yt,FINAL
   - RULE-SET,proxy,butatik
-  - RULE-SET,telegramcidr,tele
   - RULE-SET,gfw,butatik02
   - RULE-SET,ml,butatik02
   - RULE-SET,fb,butatik02
-  - RULE-SET,shopee,shopee
   - RULE-SET,googlecdn,butatik02
   - RULE-SET,google2,butatik02
   #- DOMAIN-SUFFIX,googlesyndication.com,idf
