@@ -15,27 +15,11 @@ proxies:
       headers:
         Host: tsel.me
     udp: true
-  - name: ardhy2
-    server: dv-qq.xgra.my.id
-    port: 80
-    type: vmess
-    uuid: f50f41a8-cca6-49f2-a1df-f5bfa4527829
-    alterId: 0
-    cipher: auto
-    tls: false
-    skip-cert-verify: true
-    servername: tsel.me
-    network: ws
-    ws-opts:
-      path: /worryfree
-      headers:
-        Host: tsel.me
-    udp: true
+proxy-groups:
   - name: userXnoob
     type: fallback 
     proxies:
       - ardhy
-      - ardhy2
 rules:
   - DST-PORT,7895,REJECT
   - DST-PORT,7892,REJECT
