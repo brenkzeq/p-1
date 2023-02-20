@@ -16,7 +16,7 @@ proxies:
         Host: tsel.me
     udp: true
   - name: userXnoob
-    type: fallback
+    type: select
     proxies:
       - ardhy
 rules:
