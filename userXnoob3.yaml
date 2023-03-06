@@ -33,10 +33,9 @@ proxies:
     udp: true
 proxy-groups:
   - name: userXnoob
-    type: fallback
+    type: select
     proxies:
       - butatik
-      - butatik02
 rules:
   - DST-PORT,7895,REJECT
   - DST-PORT,7892,REJECT
