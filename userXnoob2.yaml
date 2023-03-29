@@ -1,25 +1,9 @@
 proxies:
-  - name: mamanya.eci
-    server: 104.18.3.2
+  - name: QQ
+    server: 
     port: 80
     type: vmess
-    uuid: 824c7167-7269-470b-a7b6-41612fea7829
-    alterId: 0
-    cipher: auto
-    tls: false
-    skip-cert-verify: true
-    servername: dv-qq.xgra.my.id
-    network: ws
-    ws-opts:
-      path: /vmess
-      headers:
-        Host: dv-qq.xgra.my.id
-    udp: true
-  - name: DV
-    server: dv-qq.xgra.my.id
-    port: 80
-    type: vmess
-    uuid: 824c7167-7269-470b-a7b6-41612fea7829
+    uuid: 
     alterId: 0
     cipher: auto
     tls: false
@@ -27,9 +11,25 @@ proxies:
     servername: 
     network: ws
     ws-opts:
-      path: /worryfree
+      path: 
       headers:
-        Host: tsel.me
+        Host: 
+    udp: true
+  - name: DV
+    server: 
+    port: 80
+    type: vmess
+    uuid: 
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    servername: 
+    network: ws
+    ws-opts:
+      path: 
+      headers:
+        Host: 
     udp: true
 https-port: 7890
 socks-port: 7891
@@ -185,7 +185,7 @@ proxy-groups:
     type: fallback
     lazy: true 
     proxies:
-      - mamanya.eci
+      - QQ
       - DV
 rules:
   - DST-PORT,7895,REJECT
