@@ -225,7 +225,7 @@ proxy-groups:
   - name: ads
     type: select 
     proxies:
-      - REJECT 
+      - REJECT
       - Direct
   - name: Direct
     type: select
