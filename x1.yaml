@@ -70,13 +70,13 @@ proxy-groups:
     proxies:
       - sss
       - jonamal
-rule-providers:
-  clash:
-    type: http
-    behavior: domain
-    url: https://howdy.id/download/rules/clash.txt
-    path: ./providers/rule-provider_clash.yaml
-    interval: 86400
+#rule-providers:
+ # clash:
+  #  type: http
+   # behavior: domain
+    #url: https://howdy.id/download/rules/clash.txt
+    #path: ./providers/rule-provider_clash.yaml
+    #interval: 86400
 rules:
   - RULE-SET,clash,REJECT
   - MATCH,FASTSSH-SSHKIT-HOWDY
