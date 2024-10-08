@@ -1,0 +1,17 @@
+bug:
+  - &pd1 104.18.53.42
+  - &pd2 104.26.14.110
+  - &pd3 104.26.7.171
+
+proxies:
+  - name: dava
+    server: 104.26.14.110
+    port: 443
+    type: trojan
+    password: 391013df-3194-4788-8385-2b365b1baab8
+    skip-cert-verify: true
+    sni: dtpz.denkaaravpn.my.id
+    network: grpc
+    grpc-opts:
+      grpc-service-name: trojan
+    udp: true
