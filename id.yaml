@@ -1,0 +1,15 @@
+proxies:
+  - name: ðŸ‡®ðŸ‡© Incapsula
+    server: *pd1
+    port: 443
+    type: vmess
+    uuid: bbdb6fb0-a7d8-4110-90a4-532b15973a2c
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: dq.arsylastore.shop
+    network: grpc
+    grpc-opts:
+      grpc-service-name: vmess-grpc
+    udp: true
