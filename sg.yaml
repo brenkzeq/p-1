@@ -5,7 +5,7 @@ bug:
 
 proxies:
   - name: dava
-    server: 104.26.14.110
+    server: *pd2
     port: 443
     type: trojan
     password: 391013df-3194-4788-8385-2b365b1baab8
