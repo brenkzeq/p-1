@@ -1,5 +1,9 @@
+bug:
+  - &pd1 104.18.53.42
+  - &pd2 104.26.14.110
+  - &pd3 104.26.7.171
 proxies:
-  - name: ðŸ‡®ðŸ‡© Incapsula
+  - name: id_1
     server: *pd1
     port: 443
     type: vmess
